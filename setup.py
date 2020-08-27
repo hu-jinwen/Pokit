@@ -12,18 +12,8 @@ setup(
     author='hu-jinwen',
     author_email='hu-jinwen@outlook.com',
     license='MIT',
-    classifiers=[
-        "Programming Language :: Python :: 3.0",
-        "Programming Language :: Python :: 3.1",
-        "Programming Language :: Python :: 3.2",
-        "Programming Language :: Python :: 3.3",
-        "Programming Language :: Python :: 3.4",
-        "Programming Language :: Python :: 3.5",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-    ],
     keywords='python toolkit utils',
-    packages=['main'],
+    packages=['pokit.utils', 'pokit.tools'],
+    install_requires=['pycrypto==2.6.1'],
+    python_requires='>=3'
 )
