@@ -1,2 +1,5 @@
 .idea/*
 venv/*
+Pokit.egg-info
+build
+dist

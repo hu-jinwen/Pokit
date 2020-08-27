@@ -25,5 +25,5 @@ setup(
         "Programming Language :: Python :: 3.9",
     ],
     keywords='python toolkit utils',
-    packages=['pycrypto'],
+    packages=['main'],
 )
