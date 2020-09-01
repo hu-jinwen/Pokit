@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name='Pokit',
-    version='0.1.1',
+    version='0.1.2',
     description='python toolkit',
     url='https://github.com/hu-jinwen/Pokit',
     author='hu-jinwen',
@@ -15,7 +15,7 @@ setup(
     keywords='python toolkit utils',
     packages=['pokit.utils', 'pokit.tools'],
     install_requires=[
-        'pycrypto==2.6.1',
+        # 'pycrypto==2.6.1',
         "mysqlclient==2.0.1",
         "redis==3.5.3"
     ],
