@@ -46,3 +46,13 @@ def md5(_str):
     :return:
     """
     return hashlib.md5(_str.encode('utf-8')).hexdigest()
+
+
+def byte_array_to_str(byte_list):
+    """
+    字节数组转字符串
+    有时候我们会拿到int类型的字节数组（像java中那样，我们可以通过该方法将其转换成字符串），
+    :param byte_list:
+    :return:
+    """
+    return ''.join([chr(i % 256) for i in byte_list])
