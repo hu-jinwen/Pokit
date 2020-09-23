@@ -17,7 +17,8 @@ setup(
     install_requires=[
         # 'pycrypto==2.6.1',
         "mysqlclient==2.0.1",
-        "redis==3.5.3"
+        "redis==3.5.3",
+        "greenstalk==2.0.0"
     ],
     python_requires='>=3'
 )

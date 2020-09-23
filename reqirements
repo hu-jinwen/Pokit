@@ -2,3 +2,4 @@ pycrypto==2.6.1
 mysqlclient==2.0.1
 redis==3.5.3
 gevent==20.6.2
+greenstalk==2.0.0
