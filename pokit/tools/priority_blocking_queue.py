@@ -25,14 +25,14 @@ class PriorityBlockingQueue(object):
     * maxsize：获取队列的最大容量
     """
 
-    def __init__(self, maxsize=None):
+    def __init__(self, maxsize: int = None):
         """
         init
         :param maxsize: 队列的最大容量
         """
         self.__queue = PriorityQueue(maxsize=maxsize)
 
-    def put(self, item, priority=200):
+    def put(self, item, priority: int = 200) -> None:
         """
         向队列尾部插入一个元素，如果该队列已满，则一直阻塞。
         :param item:
@@ -47,7 +47,7 @@ class PriorityBlockingQueue(object):
                 pass
             time.sleep(0.5)
 
-    def offer(self, item, priority=200):
+    def offer(self, item, priority: int = 200) -> bool:
         """
         向队列尾部插入一个元素，插入成功返回True。插入失败返回False。
         :param item: 元素
@@ -94,14 +94,14 @@ class PriorityBlockingQueue(object):
             pass
         return None
 
-    def qsize(self):
+    def qsize(self) -> int:
         """
         获取队列中当前元素数量
         :return:
         """
         return self.__queue.qsize()
 
-    def maxsize(self):
+    def maxsize(self) -> int:
         """
         获取队列的最大容量
         :return:
