@@ -5,9 +5,9 @@ from pokit.tools.priority_blocking_queue import PriorityBlockingQueue
 
 queue = PriorityBlockingQueue()
 
-queue.put("Hello World")
-queue.put("Hello World2")
-queue.put("Hello World3")
+queue.put({"1": "sss"}, 23424234)
+queue.put({"2": "ss"}, 234243)
+queue.put({"3": "ssssss"}, 2)
 poll = queue.poll()
 queue_poll = queue.poll()
 n = queue.poll()

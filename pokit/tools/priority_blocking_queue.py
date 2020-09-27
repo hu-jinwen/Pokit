@@ -5,6 +5,10 @@ import time
 
 from gevent.queue import PriorityQueue
 
+from pokit.tools import LoggerFactory
+
+logger = LoggerFactory.get_logger("PriorityBlockingQueue")
+
 
 class PriorityBlockingQueue(object):
     """
@@ -41,10 +45,10 @@ class PriorityBlockingQueue(object):
         """
         while True:
             try:
-                self.__queue.put((priority, item))
+                self.__queue.put(PriorityEntry(priority, item))
                 break
-            except Exception:
-                pass
+            except Exception as e:
+                logger.debug("put data failed error -> {0}".format(e))
             time.sleep(0.5)
 
     def offer(self, item, priority: int = 200) -> bool:
@@ -55,10 +59,11 @@ class PriorityBlockingQueue(object):
         :return:
         """
         try:
-            self.__queue.put((priority, item), block=False)
-        except Exception:
-            return False
-        return True
+            self.__queue.put(PriorityEntry(priority, item), block=False)
+            return True
+        except Exception as e:
+            logger.debug("offer data failed error -> {0}".format(e))
+        return False
 
     def poll(self):
         """
@@ -66,9 +71,9 @@ class PriorityBlockingQueue(object):
         :return:
         """
         try:
-            return self.__queue.get(block=False)[1]
-        except Exception:
-            pass
+            return self.__queue.get(block=False).data
+        except Exception as e:
+            logger.debug("poll data failed error -> {0}".format(e))
         return None
 
     def take(self):
@@ -78,9 +83,9 @@ class PriorityBlockingQueue(object):
         """
         while True:
             try:
-                return self.__queue.get()[1]
-            except Exception:
-                pass
+                return self.__queue.get().data
+            except Exception as e:
+                logger.debug("take data failed error -> {0}".format(e))
             time.sleep(0.5)
 
     def peek(self):
@@ -89,9 +94,9 @@ class PriorityBlockingQueue(object):
         :return:
         """
         try:
-            return self.__queue.peek(block=False)[1]
-        except Exception:
-            pass
+            return self.__queue.peek(block=False).data
+        except Exception as e:
+            logger.debug("peek data failed error -> {0}".format(e))
         return None
 
     def qsize(self) -> int:
@@ -107,3 +112,14 @@ class PriorityBlockingQueue(object):
         :return:
         """
         return self.__queue.maxsize
+
+
+class PriorityEntry(object):
+    """具有排序功能的entry"""
+
+    def __init__(self, priority: int, data):
+        self.data = data
+        self.priority = priority
+
+    def __lt__(self, other):
+        return self.priority < other.priority
