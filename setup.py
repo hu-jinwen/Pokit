@@ -5,7 +5,7 @@ Created by hu-jinwen on 2020/8/27
 from setuptools import setup
 
 setup(
-    name='Pokit',
+    name='pokit',
     version='0.1.6',
     description='python toolkit',
     url='https://github.com/hu-jinwen/Pokit',
