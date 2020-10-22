@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name='pokit',
-    version='0.1.7',
+    version='0.1.8',
     description='python toolkit',
     url='https://github.com/hu-jinwen/Pokit',
     author='hu-jinwen',
@@ -14,6 +14,9 @@ setup(
     license='MIT',
     keywords='python toolkit utils',
     packages=['pokit.utils', 'pokit.tools'],
+    data_files=[
+        ("resources", ["resources/Transfer.jar"])
+    ],
     install_requires=[
         # 'pycrypto==2.6.1',
         "mysqlclient==2.0.1",

@@ -8,10 +8,20 @@ from signal import signal, SIGTERM
 import jpype
 
 # 使用 signal 捕获关闭信号
+from pokit.tools import LoggerFactory
+from pokit.utils import PathUtils
+
 signal(SIGTERM, lambda signum, stack_frame: exit(1))
 
-jar_path = os.path.join(os.path.abspath('.'), 'libs/test.jar')
-jpype.startJVM(jpype.getDefaultJVMPath(), "-ea", "-Djava.class.path=%s" % jar_path)
+base_path = PathUtils.get_env_path()
+if "/Pokit/" in PathUtils.get_env_path():
+    cwd = os.getcwd()
+    base_path = cwd[0:cwd.rindex("/Pokit/") + 6]
+
+jar_path = "{0}/resources/transfer.jar".format(base_path)
+jpype.startJVM(jpype.getDefaultJVMPath(), "-ea", "-Djava.class.path={0}".format(jar_path))
+
+logger = LoggerFactory.get_logger("ConvertUtils")
 
 
 def bytes_str_to_str(bytes_str):
@@ -21,12 +31,9 @@ def bytes_str_to_str(bytes_str):
     :param bytes_str:
     :return:
     """
-    try:
-        Transfer = jpype.JClass("com.hujinwen.Transfer")
-        transfer = Transfer()
-        return transfer.bytesStrToString(bytes_str, "utf-8")
-    finally:
-        pass
+    transfer = jpype.JClass("com.hujinwen.Transfer")
+    transfer = transfer()
+    return transfer.bytesStrToString(bytes_str, "utf-8")
 
 
 @atexit.register
@@ -37,5 +44,5 @@ def __on_close():
     """
     try:
         jpype.shutdownJVM()
-    except Exception:
-        pass
+    except Exception as e:
+        logger.warn(e)
