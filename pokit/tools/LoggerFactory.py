@@ -3,7 +3,7 @@ Created by hu-jinwen on 2019/11/18
 """
 import logging
 
-LEVEL = logging.INFO
+DEFAULT_LEVEL = logging.INFO
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
@@ -15,5 +15,5 @@ def get_logger(name):
     :return:
     """
     logger = logging.getLogger(name)
-    logger.setLevel(LEVEL)
+    logger.setLevel(DEFAULT_LEVEL)
     return logger
