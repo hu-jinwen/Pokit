@@ -28,3 +28,5 @@ def get_root_path(project_name: str) -> str:
     :return:
     """
     # TODO 这里获取当前文件路径，通过项目名称截取一下
+    # 获取当前文件名 __file__
+    # __name__ 当前模块名，pokit.utils.PathUtils
