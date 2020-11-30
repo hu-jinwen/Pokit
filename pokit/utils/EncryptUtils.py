@@ -4,6 +4,7 @@ Created by joe on 2020/7/3
 import base64
 import hashlib
 import urllib
+import warnings
 
 from pokit.tools import LoggerFactory
 
@@ -50,10 +51,13 @@ def md5(_str):
 
 def byte_array_to_str(byte_list):
     """
+    FIXME 推荐使用 ConvertUtils.bytes_str_to_str(byte_list)，该方法在做某些字节转字符串时，并不准确。
+
     字节数组转字符串
     有时候我们会拿到整型字节数组（像 [72, 101, 108, 108, 111] 这样的），
     我们可以通过该方法将其转换为字符串
     :param byte_list:
     :return:
     """
+    warnings.warn("EncryptUtils.byte_array_to_str is deprecated!", DeprecationWarning)
     return ''.join([chr(i % 256) for i in byte_list])

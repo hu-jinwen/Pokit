@@ -19,3 +19,12 @@ def get_launch_path() -> str:
     :return:
     """
     return os.path.dirname(os.path.abspath(sys.argv[0]))
+
+
+def get_root_path(project_name: str) -> str:
+    """
+    获取项目根目录
+    :param project_name: 项目名称
+    :return:
+    """
+    # TODO 这里获取当前文件路径，通过项目名称截取一下
