@@ -4,3 +4,4 @@ Pokit.egg-info
 build
 dist
 **/__pycache__/**
+**/logs/*.log
