@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name='pokit',
-    version='0.1.8.1',
+    version='0.1.8.2',
     description='python toolkit',
     url='https://github.com/hu-jinwen/Pokit',
     author='hu-jinwen',
@@ -22,7 +22,8 @@ setup(
         "mysqlclient==2.0.1",
         "redis==3.5.3",
         "greenstalk==2.0.0",
-        "JPype1==1.0.2"
+        "JPype1==1.0.2",
+        "PyYAML==5.3.1"
     ],
     python_requires='>=3'
 )
