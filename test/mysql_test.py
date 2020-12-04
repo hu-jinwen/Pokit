@@ -1,7 +1,7 @@
 """
 Created by hu-jinwen on 2020/8/29
 """
-from pokit.tools.MySQLClient import MySQLClient
+from pokit.tools.mysql_client import MySQLClient
 
 mysql_client = MySQLClient("10.0.0.38", "fbi", "fbimysql", "Fbimysql@12426")
 
