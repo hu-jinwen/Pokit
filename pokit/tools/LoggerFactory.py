@@ -8,14 +8,15 @@ from logging import Logger
 
 import yaml
 
+from pokit.utils import PathUtils
+
 
 def init():
     """
     初始化logging配置
     :return:
     """
-    root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+    root_path = PathUtils.get_root_path()
     yaml_file_path = root_path + "/logging.yaml"
     if not os.path.exists(yaml_file_path):
         yaml_file_path = root_path + "/logging.yml"
@@ -30,7 +31,8 @@ def init():
         logging.config.fileConfig(fname=conf_file_path, disable_existing_loggers=True)
         return
 
-    raise FileNotFoundError("Can't find configuration file, logging.conf or logging.yaml or logging.yml")
+    logger = get_logger("LoggerFactory.init")
+    logger.warning("Can't find configuration file, logging.conf or logging.yaml or logging.yml")
 
 
 def get_logger(name: str) -> Logger:
