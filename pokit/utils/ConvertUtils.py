@@ -2,7 +2,6 @@
 Created by hu-jinwen on 2020/10/16
 """
 import atexit
-import os
 from signal import signal, SIGTERM
 
 import jpype
@@ -13,12 +12,7 @@ from pokit.utils import PathUtils
 
 signal(SIGTERM, lambda signum, stack_frame: exit(1))
 
-base_path = PathUtils.get_env_path()
-if "/Pokit/" in PathUtils.get_env_path():
-    cwd = os.getcwd()
-    base_path = cwd[0:cwd.rindex("/Pokit/") + 6]
-
-jar_path = "{0}/resources/transfer.jar".format(base_path)
+jar_path = "{0}/resources/transfer.jar".format(PathUtils.get_root_path("Pokit"))
 jpype.startJVM(jpype.getDefaultJVMPath(), "-ea", "-Djava.class.path={0}".format(jar_path))
 
 logger = LoggerFactory.get_logger("ConvertUtils")
