@@ -6,7 +6,7 @@ from setuptools import setup
 
 setup(
     name='pokit',
-    version='0.1.10',
+    version='0.1.13',
     description='python toolkit',
     url='https://github.com/hu-jinwen/Pokit',
     author='hu-jinwen',
