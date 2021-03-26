@@ -23,7 +23,7 @@ setup(
         "redis==3.5.3",
         "greenstalk==2.0.0",
         "JPype1==1.0.2",
-        "PyYAML==5.3.1"
+        "PyYAML==5.4"
     ],
     python_requires='>=3'
 )
